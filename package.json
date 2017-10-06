@@ -1,0 +1,18 @@
+{
+  "name": "nodetodoapi",
+  "version": "1.0.0",
+  "description": "Testing some of the API features for a todo application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "ToDo"
+  ],
+  "author": "Paul Canty",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.5"
+  }
+}
