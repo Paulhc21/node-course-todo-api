@@ -12,6 +12,15 @@ var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 
+app.get('/todos', ( req, res ) => {
+    Todo.find({})
+        .then(( todos ) => {
+            res.send({ todos });
+        }, ( err ) => {
+            res.status(400).send(`${ err.message } ${ err.errors.text.message }`);
+        });
+});
+
 app.post('/todos', ( req, res ) => {
     var todo = new Todo({
         text: req.body.text
