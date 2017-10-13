@@ -1,3 +1,5 @@
+require('./config/config');
+
 // the {} around mongoose etc are a way to not have to call the object that gets pulled from module.exports
 // this is called destructuring
 const {mongoose} = require( './db/mongoose' ),
@@ -10,7 +12,7 @@ const express = require( 'express' ),
       _ = require( 'lodash' );
       bodyParser = require( 'body-parser' );
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT;
 
 app.use(bodyParser.json());
 
