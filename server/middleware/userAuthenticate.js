@@ -1,6 +1,8 @@
 const {User} = require( './../models/user' );
 
 module.exports = {
+
+    //function to authenticate a user by the token in the browser header
     authenticate( req, res, next ) {
         var token = req.header('x-auth');
         

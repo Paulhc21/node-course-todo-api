@@ -34,6 +34,7 @@ const UserSchema = new Schema ({
     }]
 });
 
+// method to only return the user id and email not password, or access tokens
 UserSchema.methods.toJSON = function() {
     var user = this,
         userObject = user.toObject();
@@ -41,6 +42,7 @@ UserSchema.methods.toJSON = function() {
     return _.pick(userObject, ['_id', 'email']);
 };
 
+// generate and save a user access and webtoken to the user model
 UserSchema.methods.generateAuthToken = function() {
     var user = this,
         access = 'auth',
@@ -57,6 +59,7 @@ UserSchema.methods.generateAuthToken = function() {
         });
 };
 
+// create a method that finds one user by the token in the header and verify that user
 UserSchema.statics.findByToken = function( token ) {
     var User = this,
         decoded;
@@ -74,6 +77,7 @@ UserSchema.statics.findByToken = function( token ) {
     });
 };
 
+//this hashes and salts the user password before it is saved to the database
 UserSchema.pre('save', function( next ) {
     var user = this;
 
