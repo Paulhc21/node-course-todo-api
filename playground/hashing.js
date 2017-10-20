@@ -1,9 +1,26 @@
 const {SHA256} = require( 'crypto-js' );
 const jwt = require( 'jsonwebtoken' );
+const bcrypt = require( 'bcryptjs' );
+
+// example for hashing a password pre entering the user in the database
+
+var password = '123abc!';
+
+/*bcrypt.genSalt(10, ( err, salt ) => {
+    bcrypt.hash(password, salt, ( err, hash ) => {
+        console.log(hash);
+    });
+});*/
+
+var hashedPassword = '$2a$10$vKHOKp95snOgSMeVjqZCUuVsVhILdiClNlOeEIPMGGXuo868AslB2';
+
+bcrypt.compare('123!', hashedPassword, ( err, res ) => {
+    console.log(res)
+})
 
 // example using standards created by jsonwebtoken
 
-var data = {
+/*var data = {
     id: 10
 }
 
@@ -39,4 +56,4 @@ if ( resultHash === token.hash ) {
     console.log('data was not changed');
 } else {
     console.log('data was changed do not trust');
-}
+}*/
