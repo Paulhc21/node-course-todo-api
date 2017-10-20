@@ -5,7 +5,8 @@ require('./config/config');
 const {mongoose} = require( './db/mongoose' ),
       {User} = require( './models/user' ),
       {Todo} = require( './models/todo' ),
-      todoRoute = require( './routes/todos' );
+      todoRoute = require( './routes/todos' ),
+      userAuth = require( './middleware/userAuthenticate' );
 
 const express = require( 'express' ),
       app = express(),
@@ -18,6 +19,10 @@ var port = process.env.PORT;
 app.use(bodyParser.json());
 
 todoRoute( app );
+
+app.get('/users/me', userAuth.authenticate, ( req, res ) => {
+    res.send(req.user);
+});
 
 app.post('/users', ( req, res ) => {
     var userData = _.pick( req.body, ['email', 'password'] ),
