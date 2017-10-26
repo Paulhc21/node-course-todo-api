@@ -14,7 +14,7 @@ var password = '123abc!';
 
 var hashedPassword = '$2a$10$vKHOKp95snOgSMeVjqZCUuVsVhILdiClNlOeEIPMGGXuo868AslB2';
 
-bcrypt.compare('123!', hashedPassword, ( err, res ) => {
+bcrypt.compare('123abc!', hashedPassword, ( err, res ) => {
     console.log(res)
 })
 
